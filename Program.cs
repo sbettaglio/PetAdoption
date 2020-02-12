@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PetAdoption
+namespace petToAdoptAdoption
 {
   class Program
   {
@@ -9,7 +9,8 @@ namespace PetAdoption
     {
       var shelter = new List<string>();
 
-      while (true)
+      var isRunning = true;
+      while (isRunning)
       {
 
         Console.WriteLine("Current Pets");
@@ -20,11 +21,31 @@ namespace PetAdoption
           Console.WriteLine($"{i}:{currentPet}");
         }
 
-        Console.WriteLine("What pet do you want to add?");
-        var pet = Console.ReadLine();
+        //small menu system for the user
+        Console.WriteLine("what do you want to do?");
+        Console.WriteLine("(ADD) a pet?");
+        Console.WriteLine("(ADOPT) a pet? ");
+        Console.WriteLine("(QUIT)");
+        var input = Console.ReadLine();
 
-        shelter.Add(pet);
-
+        if (input.ToLower() == "add")
+        {
+          Console.WriteLine("What pet do you want to add?");
+          var petToAdd = Console.ReadLine();
+          shelter.Add(petToAdd);
+        }
+        else if (input.ToLower() == "adopt")
+        {
+          //Delete...Remove
+          Console.WriteLine("Who is getting adopted");
+          var petToAdopt = Console.ReadLine();
+          shelter.Remove(petToAdopt);
+        }
+        else if (input.ToLower() == "quit")
+        {
+          isRunning = false;
+        }
+        Console.WriteLine("Goodbye");
       }
     }
   }
